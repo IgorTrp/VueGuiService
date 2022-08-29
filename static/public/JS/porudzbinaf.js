@@ -7,7 +7,7 @@ function init() {
         document.getElementById('iddelete').value = '';
 
         if(overiIO(data.id)){
-        fetch('http://localhost/admin/porudzbina', {
+        fetch('https://vue-rest.herokuapp.com/admin/porudzbina', {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' ,'Access-Control-Allow-Origin': '*'},
             credentials: 'include',
@@ -44,7 +44,7 @@ function init() {
         document.getElementById('ikorisnikId').value='';
 
         if(overiIO(data.id) && overiI(data.proizvodId) && overiT(data.naznake)&& overiT(data.status)&& overiT(data.vremeNastanka)&& overiI(data.korisnikId)){
-        fetch('http://localhost/admin/porudzbina', {
+        fetch('https://vue-rest.herokuapp.com/admin/porudzbina', {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' ,'Access-Control-Allow-Origin': '*'},
             credentials: 'include',
@@ -83,7 +83,7 @@ function init() {
 
 
         if(overiIO(data.id) && overiIO(data.proizvodId) && overiTO(data.naznake)&& overiTO(data.status)&& overiTO(data.vremeNastanka)&& overiIO(data.korisnikId)){
-        fetch('http://localhost/admin/porudzbina', {
+        fetch('https://vue-rest.herokuapp.com/admin/porudzbina', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' ,'Access-Control-Allow-Origin': '*'},
             credentials: 'include',
@@ -102,7 +102,7 @@ function init() {
 
 
 
-    fetch('http://localhost/admin/porudzbina', {
+    fetch('https://vue-rest.herokuapp.com/admin/porudzbina', {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' ,'Access-Control-Allow-Origin': '*'},
             credentials: 'include',

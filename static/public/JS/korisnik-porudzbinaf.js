@@ -7,7 +7,7 @@ function init() {
         document.getElementById('iddelete').value = '';
 
         if(overiIO(data.id)){
-        fetch('http://localhost/admin/korisnik-porudzbina', {
+        fetch('https://vue-rest.herokuapp.com/admin/korisnik-porudzbina', {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
@@ -39,7 +39,7 @@ function init() {
 
 
         if(overiIO(data.id) && overiI(data.korisnikId) && overiI(data.porudzbinaId)){
-        fetch('http://localhost/admin/korisnik-porudzbina', {
+        fetch('https://vue-rest.herokuapp.com/admin/korisnik-porudzbina', {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
@@ -72,7 +72,7 @@ function init() {
 
 
         if(overiIO(data.id) && overiIO(data.korisnikId) && overiIO(data.porudzbinaId)){
-        fetch('http://localhost/admin/korisnik-porudzbina', {
+        fetch('https://vue-rest.herokuapp.com/admin/korisnik-porudzbina', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
@@ -89,7 +89,7 @@ function init() {
     });
 
 
-    fetch('http://localhost/admin/korisnik-porudzbina', {
+    fetch('https://vue-rest.herokuapp.com/admin/korisnik-porudzbina', {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         }).then( res => res.json())

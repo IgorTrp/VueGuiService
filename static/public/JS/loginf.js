@@ -9,7 +9,7 @@ function init() {
 
 
         if(overiTO(data.korisnickoIme)){
-        fetch('http://localhost:11000/login', {
+        fetch('https://vue-verification.herokuapp.com/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' ,'Access-Control-Allow-Origin': '*'},
             credentials: 'include',
@@ -35,7 +35,7 @@ function init() {
 
 
 
-        fetch('http://localhost:11000/auth', {
+        fetch('https://vue-verification.herokuapp.com/auth', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json','Access-Control-Allow-Origin': 'true' },
             credentials: 'include'
@@ -55,7 +55,7 @@ function init() {
 
 
 
-        fetch('http://localhost:11000/authm', {
+        fetch('https://vue-verification.herokuapp.com/authm', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json','Access-Control-Allow-Origin': 'true' },
             credentials: 'include'

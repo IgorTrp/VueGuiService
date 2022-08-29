@@ -7,7 +7,7 @@ function init() {
         document.getElementById('iddelete').value = '';
 
         if(overiIO(data.id)){
-        fetch('http://localhost/admin/primalac', {
+        fetch('https://vue-rest.herokuapp.com/admin/primalac', {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' ,'Access-Control-Allow-Origin': '*'},
             credentials: 'include',
@@ -44,7 +44,7 @@ function init() {
         document.getElementById('iadresaId').value='';
 
         if(overiIO(data.id) && overiT(data.ime) && overiT(data.prezime)&& overiT(data.telefon)&& overiI(data.adresaId)){
-        fetch('http://localhost/admin/primalac', {
+        fetch('https://vue-rest.herokuapp.com/admin/primalac', {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' ,'Access-Control-Allow-Origin': '*'},
             credentials: 'include',
@@ -81,7 +81,7 @@ function init() {
         document.getElementById('telefon').value='';
         document.getElementById('adresaId').value='';
         if(overiIO(data.id) && overiTO(data.ime) && overiTO(data.prezime)&& overiTO(data.telefon)&& overiIO(data.adresaId)){
-        fetch('http://localhost/admin/primalac', {
+        fetch('https://vue-rest.herokuapp.com/admin/primalac', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' ,'Access-Control-Allow-Origin': '*'},
             credentials: 'include',
@@ -100,7 +100,7 @@ function init() {
 
 
 
-    fetch('http://localhost/admin/primalac', {
+    fetch('https://vue-rest.herokuapp.com/admin/primalac', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' ,'Access-Control-Allow-Origin': '*'},
         credentials: 'include',

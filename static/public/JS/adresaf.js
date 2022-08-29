@@ -9,7 +9,7 @@ function init() {
         document.getElementById('iddelete').value = '';
 
         if(overiIO(data.id)){
-        fetch('http://localhost/admin/adresa', {
+        fetch('https://vue-rest.herokuapp.com/admin/adresa', {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' ,'Access-Control-Allow-Origin': '*'},
             credentials: 'include',
@@ -48,7 +48,7 @@ function init() {
         document.getElementById('ibrojstana').value='';
 
         if(overiIO(data.id) && overiT(data.drzava) && overiT(data.grad)&& overiT(data.postanskiBroj)&& overiT(data.ulica)&& overiI(data.brojstana)){
-        fetch('http://localhost/admin/adresa', {
+        fetch('https://vue-rest.herokuapp.com/admin/adresa', {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' ,'Access-Control-Allow-Origin': '*'},
             credentials: 'include',
@@ -85,7 +85,7 @@ function init() {
         document.getElementById('brojstana').value='';
 
         if(overiIO(data.id) && overiTO(data.drzava) && overiTO(data.grad)&& overiTO(data.postanskiBroj)&& overiTO(data.ulica)&& overiIO(data.brojstana)){
-        fetch('http://localhost/admin/adresa', {
+        fetch('https://vue-rest.herokuapp.com/admin/adresa', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' ,'Access-Control-Allow-Origin': '*'},
             credentials: 'include',
@@ -105,7 +105,7 @@ function init() {
 	
 	
 	
-	fetch('http://localhost/admin/adresa', {
+	fetch('https://vue-rest.herokuapp.com/admin/adresa', {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' ,'Access-Control-Allow-Origin': '*'},
             credentials: 'include',

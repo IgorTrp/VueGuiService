@@ -7,7 +7,7 @@ function init() {
         document.getElementById('iddelete').value = '';
 
         if(overiIO(data.id)){
-        fetch('http://localhost/admin/korisnik', {
+        fetch('https://vue-rest.herokuapp.com/admin/korisnik', {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' ,'Access-Control-Allow-Origin': '*'},
             credentials: 'include',
@@ -43,7 +43,7 @@ function init() {
         document.getElementById('ilozinka').value='';
         document.getElementById('idatumRegistracije').value='';
         if(overiIO(data.id) && overiI(data.primalacId) && overiT(data.povlastice)&& overiT(data.korisnickoIme)&& overiT(data.lozinka)&& overiT(data.datumRegistracije)){
-        fetch('http://localhost/admin/korisnik', {
+        fetch('https://vue-rest.herokuapp.com/admin/korisnik', {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' ,'Access-Control-Allow-Origin': '*'},
             credentials: 'include',
@@ -81,7 +81,7 @@ function init() {
         document.getElementById('datumRegistracije').value='';
 		console.log(overiIO(data.id) +" "+ overiIO(data.primalacId) +" "+ overiTO(data.povlastice)+" "+ overiTO(data.korisnickoIme)+" "+ overiTO(data.lozinka)+" "+ overiTO(data.datumRegistracije));
         if(overiIO(data.id) && overiIO(data.primalacId) && overiTO(data.povlastice)&& overiTO(data.korisnickoIme)&& overiTO(data.lozinka)&& overiTO(data.datumRegistracije)){
-        fetch('http://localhost/admin/korisnik', {
+        fetch('https://vue-rest.herokuapp.com/admin/korisnik', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' ,'Access-Control-Allow-Origin': '*'},
             credentials: 'include',
@@ -100,7 +100,7 @@ function init() {
 
     });
 
-    fetch('http://localhost/admin/korisnik', {
+    fetch('https://vue-rest.herokuapp.com/admin/korisnik', {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' ,'Access-Control-Allow-Origin': '*'},
             credentials: 'include',
