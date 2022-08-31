@@ -26,6 +26,7 @@ function init() {
                 throw new Error('Pogreska');
             }
             }).then(resp=>{
+                localStorage.clear();
                 localStorage.setItem('id', resp.id);
                 localStorage.setItem('token', resp.token);
                 open("/admin/index","_self");
