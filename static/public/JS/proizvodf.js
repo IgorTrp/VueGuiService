@@ -35,7 +35,7 @@ function init() {
         slikaPokazivac: document.getElementById('islikaPokazivac').value,
         cena: document.getElementById('icena').value,
         token:localStorage.getItem('token')
-        
+
         };
 
         document.getElementById('iid').value='';
@@ -100,10 +100,11 @@ function init() {
     });
 
 
-    fetch('https://vue-rest.herokuapp.com/admin/proizvod', {
-            method: 'GET',
+    fetch('https://vue-rest.herokuapp.com/admin/proizvod/get', {
+            method: 'POST',
             headers: { 'Content-Type': 'application/json' ,'Access-Control-Allow-Origin': '*'},
             credentials: 'include',
+            body: JSON.stringify({token:localStorage.getItem('token')})
         }).then( res => res.json())
         .then( data => {
             console.log(data)
