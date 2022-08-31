@@ -3,7 +3,8 @@ function init() {
     document.getElementById('izbrisi').addEventListener('click', e => {
         e.preventDefault();
 
-        const data = {id: document.getElementById('iddelete').value};
+        const data = {id: document.getElementById('iddelete').value,
+        token:localStorage.getItem('token')};
         document.getElementById('iddelete').value = '';
 
         if(overiIO(data.id)){
@@ -33,7 +34,8 @@ function init() {
         povlastice: document.getElementById('ipovlastice').value,
         korisnickoIme: document.getElementById('ikorisnickoIme').value,
         lozinka: document.getElementById('ilozinka').value,
-        datumRegistracije: document.getElementById('idatumRegistracije').value
+        datumRegistracije: document.getElementById('idatumRegistracije').value,
+        token:localStorage.getItem('token')
         };
 
         document.getElementById('iid').value='';
@@ -70,7 +72,8 @@ function init() {
         povlastice: document.getElementById('povlastice').value,
         korisnickoIme: document.getElementById('korisnickoIme').value,
         lozinka: document.getElementById('lozinka').value,
-        datumRegistracije: document.getElementById('datumRegistracije').value
+        datumRegistracije: document.getElementById('datumRegistracije').value,
+        token:localStorage.getItem('token')
         };
 
         document.getElementById('id').value='';
@@ -100,17 +103,18 @@ function init() {
 
     });
 
-    fetch('https://vue-rest.herokuapp.com/admin/korisnik', {
-            method: 'GET',
+    fetch('https://vue-rest.herokuapp.com/admin/korisnik/get', {
+            method: 'POST',
             headers: { 'Content-Type': 'application/json' ,'Access-Control-Allow-Origin': '*'},
             credentials: 'include',
+            body: JSON.stringify({token:localStorage.getItem('token')})
         }).then( res => res.json())
         .then( data => {
             console.log(data)
             let lsta = document.getElementById('lista');
             if(typeof data[0] !=='undefined')
             data[0].forEach( el => {
-                lsta.innerHTML += `<li>ID: ${el.Id}, primalacId: ${el.PrimalacId}, povlastice: ${el.Povlastice}, korisnickoIme: ${el.KorisnickoIme}, lozinka: ${el.Lozinka}, datumRegistracije: ${el.DatumRegistacije}</li>`;
+                lsta.innerHTML += `<li>ID: ${el.id}, primalacId: ${el.primalacId}, povlastice: ${el.povlastice}, korisnickoIme: ${el.korisnickoime}, lozinka: ${el.lozinka}, datumRegistracije: ${el.datumregistacije}</li>`;
             });
         });
 

@@ -3,7 +3,8 @@ function init() {
     document.getElementById('izbrisi').addEventListener('click', e => {
         e.preventDefault();
 
-        const data = {id: document.getElementById('iddelete').value};
+        const data = {id: document.getElementById('iddelete').value,
+        token:localStorage.getItem('token')};
         document.getElementById('iddelete').value = '';
 
         if(overiIO(data.id)){
@@ -32,7 +33,8 @@ function init() {
         ime: document.getElementById('iime').value,
         prezime: document.getElementById('iprezime').value,
         telefon: document.getElementById('itelefon').value,
-        adresaId: document.getElementById('iadresaId').value
+        adresaId: document.getElementById('iadresaId').value,
+        token:localStorage.getItem('token')
         };
 		
 		
@@ -70,7 +72,8 @@ function init() {
         ime: document.getElementById('ime').value,
         prezime: document.getElementById('prezime').value,
         telefon: document.getElementById('telefon').value,
-        adresaId: document.getElementById('adresaId').value
+        adresaId: document.getElementById('adresaId').value,
+        token:localStorage.getItem('token')
         };
 		
 		
@@ -100,17 +103,18 @@ function init() {
 
 
 
-    fetch('https://vue-rest.herokuapp.com/admin/primalac', {
-        method: 'GET',
+    fetch('https://vue-rest.herokuapp.com/admin/primalac/get', {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' ,'Access-Control-Allow-Origin': '*'},
         credentials: 'include',
+        body: JSON.stringify({token:localStorage.getItem('token')})
     }).then( res => res.json())
     .then( data => {
         console.log(data)
         let lsta = document.getElementById('lista');
         if(typeof data[0] !=='undefined')
         data[0].forEach( el => {
-            lsta.innerHTML += `<li>ID: ${el.Id}, ime: ${el.Ime}, prezime: ${el.Prezime}, telefon: ${el.Telefon}, adresa Id: ${el.AdresaId}</li>`;
+            lsta.innerHTML += `<li>ID: ${el.id}, ime: ${el.ime}, prezime: ${el.prezime}, telefon: ${el.telefon}, adresa Id: ${el.adresaId}</li>`;
         });
     });
 

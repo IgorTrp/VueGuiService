@@ -3,7 +3,8 @@ function init() {
     document.getElementById('izbrisi').addEventListener('click', e => {
         e.preventDefault();
 
-        const data = {id: document.getElementById('iddelete').value};
+        const data = {id: document.getElementById('iddelete').value,
+        token:localStorage.getItem('token')};
         document.getElementById('iddelete').value = '';
 
         if(overiIO(data.id)){
@@ -33,7 +34,8 @@ function init() {
         naznake: document.getElementById('inaznake').value,
         status: document.getElementById('istatus').value,
         vremeNastanka: document.getElementById('ivremeNastanka').value,
-        korisnikId: document.getElementById('ikorisnikId').value
+        korisnikId: document.getElementById('ikorisnikId').value,
+        token:localStorage.getItem('token')
         };
 
         document.getElementById('iid').value='';
@@ -71,7 +73,8 @@ function init() {
         naznake: document.getElementById('naznake').value,
         status: document.getElementById('status').value,
         vremeNastanka: document.getElementById('vremeNastanka').value,
-        korisnikId: document.getElementById('korisnikId').value
+        korisnikId: document.getElementById('korisnikId').value,
+        token:localStorage.getItem('token')
         };
 
         document.getElementById('id').value='';
@@ -102,16 +105,17 @@ function init() {
 
 
 
-    fetch('https://vue-rest.herokuapp.com/admin/porudzbina', {
-            method: 'GET',
+    fetch('https://vue-rest.herokuapp.com/admin/porudzbina/get', {
+            method: 'POST',
             headers: { 'Content-Type': 'application/json' ,'Access-Control-Allow-Origin': '*'},
             credentials: 'include',
+            body: JSON.stringify({token:localStorage.getItem('token')})
         }).then( res => res.json())
         .then( data => {
             let lsta = document.getElementById('lista');
             if(typeof data[0] !=='undefined')
             data[0].forEach( el => {
-                lsta.innerHTML += `<li>ID: ${el.Id}, proizvod Id: ${el.ProizvodId}, naznake: ${el.Naznake}, status: ${el.Status}, Vreme Nastanka: ${el.VremeNastanka}, Korisnik Id: ${el.KorisnikId}</li>`;
+                lsta.innerHTML += `<li>ID: ${el.id}, proizvod Id: ${el.proizvodId}, naznake: ${el.naznake}, status: ${el.status}, Vreme Nastanka: ${el.vremenastanka}, Korisnik Id: ${el.korisnikid}</li>`;
             });
         });
 

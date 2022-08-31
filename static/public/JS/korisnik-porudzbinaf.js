@@ -3,7 +3,8 @@ function init() {
     document.getElementById('izbrisi').addEventListener('click', e => {
         e.preventDefault();
 
-        const data = {id: document.getElementById('iddelete').value};
+        const data = {id: document.getElementById('iddelete').value,
+        token:localStorage.getItem('token')};
         document.getElementById('iddelete').value = '';
 
         if(overiIO(data.id)){
@@ -30,6 +31,7 @@ function init() {
         id: document.getElementById('iid').value,
         korisnikId: document.getElementById('ikorisnikId').value,
         porudzbinaId: document.getElementById('iporudzbinaId').value,
+        token:localStorage.getItem('token')
 
         };
 
@@ -63,6 +65,7 @@ function init() {
         id: document.getElementById('id').value,
         korisnikId: document.getElementById('korisnikId').value,
         porudzbinaId: document.getElementById('porudzbinaId').value,
+        token:localStorage.getItem('token')
 
         };
 
@@ -89,16 +92,18 @@ function init() {
     });
 
 
-    fetch('https://vue-rest.herokuapp.com/admin/korisnik-porudzbina', {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' }
+    fetch('https://vue-rest.herokuapp.com/admin/korisnik-porudzbina/get', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({token:localStorage.getItem('token')})
         }).then( res => res.json())
         .then( data => {
             console.log(data)
             let lsta = document.getElementById('lista');
             if(typeof data[0] !=='undefined')
             data[0].forEach( el => {
-                lsta.innerHTML += `<li>ID: ${el.Id}, korisnik Id: ${el.KorisnikId}, porudzbinaId: ${el.PorudzbinaId}</li>`;
+                lsta.innerHTML += `<li>ID: ${el.id}, korisnik Id: ${el.korisnikId}, porudzbinaId: ${el.porudzbinaId}</li>`;
             });
         });
 

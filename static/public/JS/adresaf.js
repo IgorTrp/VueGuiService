@@ -5,7 +5,8 @@ function init() {
     document.getElementById('izbrisi').addEventListener('click', e => {
         e.preventDefault();
 
-        const data = {id: document.getElementById('iddelete').value};
+        const data = {id: document.getElementById('iddelete').value,
+        token:localStorage.getItem('token')};
         document.getElementById('iddelete').value = '';
 
         if(overiIO(data.id)){
@@ -37,7 +38,8 @@ function init() {
         grad: document.getElementById('igrad').value,
         postanskiBroj: document.getElementById('ipostanskibroj').value,
         ulica: document.getElementById('iulica').value,
-        brojstana: document.getElementById('ibrojstana').value
+        brojstana: document.getElementById('ibrojstana').value,
+        token:localStorage.getItem('token')
         };
 
         document.getElementById('iid').value='';
@@ -74,7 +76,8 @@ function init() {
         grad: document.getElementById('grad').value,
         postanskiBroj: document.getElementById('postanskibroj').value,
         ulica: document.getElementById('ulica').value,
-        brojstana: document.getElementById('brojstana').value
+        brojstana: document.getElementById('brojstana').value,
+        token:localStorage.getItem('token')
         };
 
         document.getElementById('id').value='';
@@ -105,16 +108,17 @@ function init() {
 	
 	
 	
-	fetch('https://vue-rest.herokuapp.com/admin/adresa', {
-            method: 'GET',
+	fetch('https://vue-rest.herokuapp.com/admin/adresa/get', {
+            method: 'POST',
             headers: { 'Content-Type': 'application/json' ,'Access-Control-Allow-Origin': '*'},
             credentials: 'include',
+            body: JSON.stringify({token:localStorage.getItem('token')})
         }).then( res => res.json())
         .then( data => {
                 let lsta = document.getElementById('lista');
                 if(typeof data[0] !=='undefined')
                 data[0].forEach( el => {
-                    lsta.innerHTML += `<li>ID: ${el.Id}, drzava: ${el.Drzava}, grad: ${el.Grad}, postanskiBroj: ${el.PostanskiBroj}, ulica: ${el.Ulica}, brojstana: ${el.BrojStana}</li>`;
+                    lsta.innerHTML += `<li>ID: ${el.id}, drzava: ${el.drzava}, grad: ${el.grad}, postanskiBroj: ${el.postanskiBroj}, ulica: ${el.ulica}, brojstana: ${el.brojstana}</li>`;
                 })  .catch( err => console.log(err) );
         
         });
