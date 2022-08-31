@@ -111,7 +111,7 @@ function init() {
             let lsta = document.getElementById('lista');
             if(typeof data[0] !=='undefined')
             data[0].forEach( el => {
-                lsta.innerHTML += `<li>ID: ${el.Id}, naslov: ${el.Naslov}, opis: ${el.Opis}, slika Pokazivac: ${el.SlikaPokazivac}, cena: ${el.Cena}</li>`;
+                lsta.innerHTML += `<li>ID: ${el.id}, naslov: ${el.naslov}, opis: ${el.opis}, slika Pokazivac: ${el.slikapokazivac}, cena: ${el.cena}</li>`;
             });
         });
 
