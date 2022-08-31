@@ -18,10 +18,17 @@ function init() {
             if(res.status!=400 && res.status!=500){
                 alert("Ulogovali ste se");
                 open("/admin/index","_self");
+                return res.json();
             }
               
             else{
-                alert("Greska u unosa podataka ili upita");}
+                alert("Greska u unosa podataka ili upita");
+                throw new Error('Pogreska');
+            }
+            }).then(resp=>{
+                localStorage.setItem('id', resp.id);
+                localStorage.setItem('token', resp.token);
+                open("/admin/index","_self");
             });
         }
         else{

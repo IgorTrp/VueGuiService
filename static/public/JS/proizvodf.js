@@ -33,8 +33,9 @@ function init() {
         naslov: document.getElementById('inaslov').value,
         opis: document.getElementById('iopis').value,
         slikaPokazivac: document.getElementById('islikaPokazivac').value,
-        cena: document.getElementById('icena').value
-
+        cena: document.getElementById('icena').value,
+        token:localStorage.getItem('token')
+        
         };
 
         document.getElementById('iid').value='';
@@ -69,7 +70,8 @@ function init() {
         naslov: document.getElementById('naslov').value,
         opis: document.getElementById('opis').value,
         slikaPokazivac: document.getElementById('slikaPokazivac').value,
-        cena: document.getElementById('cena').value
+        cena: document.getElementById('cena').value,
+        token:localStorage.getItem('token')
 
         };
 
